@@ -1,5 +1,5 @@
-#ifndef DECOCT.H
-#define DECOCT.H
+#ifndef DECOCT_H
+#define DECOCT_H
 
 #include <iostream>
 #include <string>

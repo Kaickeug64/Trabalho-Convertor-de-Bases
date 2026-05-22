@@ -1,5 +1,5 @@
-#ifndef DECBIN.H
-#define DECBIN.H
+#ifndef DECBIN_H
+#define DECBIN_H
 
 #include <iostream>
 #include <string>

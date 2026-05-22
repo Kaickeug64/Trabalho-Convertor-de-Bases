@@ -1,5 +1,5 @@
-#ifndef BINOCT.H
-#define BINOCT.H
+#ifndef BINOCT_H
+#define BINOCT_H
 
 #include <iostream>
 #include <string>

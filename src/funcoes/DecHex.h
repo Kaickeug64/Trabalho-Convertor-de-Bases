@@ -1,5 +1,5 @@
-#ifndef DECHEX.H
-#define DECHEX.H
+#ifndef DECHEX_H
+#define DECHEX_H
 
 #include <iostream>
 #include <string>

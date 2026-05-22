@@ -1,5 +1,5 @@
-#ifndef OCTBIN.H
-#define OCTBIN.H
+#ifndef OCTBIN_H
+#define OCTBIN_H
 
 #include <iostream>
 #include <string>
