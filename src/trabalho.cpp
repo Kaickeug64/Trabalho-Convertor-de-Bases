@@ -4,6 +4,7 @@
 #include "CalculadoraMax.h"
 #include "ConvetorDeNumeros.h"
 #include "ConvertorCSV.h"
+#include "quiz.h"
 using namespace std;
 
 
@@ -36,6 +37,7 @@ int main() {
 				break;
 			case 4:
 				cout<<"Modo quiz selecionado!"<<endl;
+				quiz();
 				break;
 			case 5:{
 				cout<<"Modo Calculadora de Máximos selecionado!"<<endl;
