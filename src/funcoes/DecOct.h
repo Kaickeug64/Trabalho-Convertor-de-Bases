@@ -4,39 +4,37 @@
 #include <iostream>
 #include <string>
 using namespace std;
-string conversaoDecimalHexadecimal(float numero){
+string conversaoDecimalOctal(float numero){
     int parteInteira = (int)numero;
     float parteFracionaria = numero - parteInteira;
 
-    string hexadecimalInteiro = "";
+    string octalInteiro = "";
     if(parteInteira == 0){
-        hexadecimalInteiro = "0";
+        octalInteiro = "0";
     }
 
     // Conversão da parte inteira
     while(parteInteira > 0){
-        int digito = parteInteira % 16;
-        if(digito < 10)
-            hexadecimalInteiro = to_string(digito) + hexadecimalInteiro;
-        else
-            hexadecimalInteiro = char('A' + digito - 10) + hexadecimalInteiro;
-        parteInteira /= 16;
+        int digito = parteInteira % 8;
+        octalInteiro = to_string(digito) + octalInteiro;
+        parteInteira /= 8;
     }
 
     // Conversão da parte fracionária
-    string hexadecimalFracionaria = "";
+    string octalFracionario = "";
     int limite = 10; // número de casas
     while(parteFracionaria > 0 && limite--){
-        parteFracionaria *= 16;
+        parteFracionaria *= 8;
         int digito = (int)parteFracionaria;
-        if(digito < 10)
-            hexadecimalFracionaria += to_string(digito);
-        else
-            hexadecimalFracionaria += char('A' + digito - 10);
+        octalFracionario += to_string(digito);
         parteFracionaria -= digito;
     }
-
-    return hexadecimalInteiro + "." + hexadecimalFracionaria;
+    
+    if (octalFracionario.length() > 16) {
+            octalFracionario.resize(16);
+            cout <<endl<< "Alerta: Número truncado para 16 caracteres após o ponto" << endl<<endl<<"Resultado:";
+        }
+    return octalInteiro + "." + octalFracionario;
 }
 
-#endif
+#endif  

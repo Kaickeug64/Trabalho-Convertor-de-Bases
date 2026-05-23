@@ -4,32 +4,35 @@
 #include <iostream>
 #include <string>
 using namespace std;
-inline string conversaoDecimalOctal(float numero){
+inline string conversaoDecimalHexadecimal(float numero){
     int parteInteira = (int)numero;
     float parteFracionaria = numero - parteInteira;
 
-    string octalInteiro = "";
+    string hexadecimalInteiro = "";
     if(parteInteira == 0){
-        octalInteiro = "0";
+        hexadecimalInteiro = "0";
     }
 
     // Conversão da parte inteira
     while(parteInteira > 0){
-        octalInteiro = to_string(parteInteira % 8) + octalInteiro;
-        parteInteira /= 8;
+        hexadecimalInteiro = to_string(parteInteira % 16) + hexadecimalInteiro;
+        parteInteira /= 16;
     }
 
     // Conversão da parte fracionária
-    string octalFracionario = "";
+    string hexadecimalFracionario = "";
     int limite = 10; // número de casas
     while(parteFracionaria > 0 && limite--){
-        parteFracionaria *= 8;
+        parteFracionaria *= 16;
         int digito = (int)parteFracionaria;
-        octalFracionario += to_string(digito);
+        hexadecimalFracionario += to_string(digito);
         parteFracionaria -= digito;
     }
-
-    return octalInteiro + "." + octalFracionario;
+    if (hexadecimalFracionario.length() > 16) {
+            hexadecimalFracionario.resize(16);
+            cout <<endl<< "Alerta: Número truncado para 16 caracteres após o ponto" << endl<<endl<<"Resultado:";
+        }
+    return hexadecimalInteiro + "." + hexadecimalFracionario;
 }
 
 #endif

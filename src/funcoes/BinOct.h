@@ -43,7 +43,12 @@ string conversaoBinarioOctal(string numero){
         numerofracionario = numero.substr(pos + 1);
 
         numero = numero.substr(0, pos);
-        return conversaoBinOctProcesses(numero) + "." + conversaoBinOctProcesses(numerofracionario);  
+        numerofracionario = conversaoBinOctProcesses(numerofracionario);
+        if (numerofracionario.length() > 16) {
+            numerofracionario.resize(16);
+            cout <<endl<< "Alerta: Número truncado para 16 caracteres após o ponto" << endl<<endl<<"Resultado:";
+        }
+        return conversaoBinOctProcesses(numero) + "." + numerofracionario;  
 
     }else{
         return conversaoBinOctProcesses(numero);

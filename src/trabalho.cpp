@@ -11,6 +11,8 @@
 #include "funcoes/BinHex.h"
 #include "funcoes/OctHex.h"
 #include "funcoes/xDec.h"
+#include "testeEntrada.h"
+#include "CalculadoraMax.h"
 using namespace std;
 
 
@@ -48,79 +50,103 @@ int main() {
 					
 					case 2:{
 						if(baseOrigem == 10){
-							double numConversao;
+							double numConversaoTestado;
+							string numConversao;
 							cout<<"Digite o número a ser convertido: ";
 							cin>>numConversao;
-							cout<<"Resultado: " <<conversaoDecimalBinario((numConversao))<<endl<<endl;
+							if(teste_entrada(numConversao, baseOrigem)){
+								numConversaoTestado = stod(numConversao);
+								cout<<"Resultado: " <<conversaoDecimalBinario((numConversaoTestado))<<endl<<endl;
+							}
 					}
 						
 						else if(baseOrigem == 8){
 							string numConversao;
 							cout<<"Digite o número a ser convertido: ";
 							cin>>numConversao;
-							cout<<"Resultado: " <<conversaoOctalBinario((numConversao))<<endl<<endl;
+							if(teste_entrada(numConversao, baseOrigem)){
+								cout<<"Resultado: " <<conversaoOctalBinario((numConversao))<<endl<<endl;
+							}
 						}
 						else if(baseOrigem == 16){
 							
 							string numConversao;
 							cout<<"Digite o número a ser convertido (Use apenas letras maiúsculas e números): ";
 							cin>>numConversao;
-							cout<<"Resultado: " <<conversaoHexadecimalBinario((numConversao))<<endl<<endl;
+							if(teste_entrada(numConversao, baseOrigem)){
+								cout<<"Resultado: " <<conversaoHexadecimalBinario((numConversao))<<endl<<endl;
+							}
 						}
 						else{
-							cout<<"ERRO";
+							cout<<endl<<"ERRO! Base de entrada inválida." <<endl<<"Bases suportadas: 2, 8, 10, 16."<<endl<<"Tente novamente."<<endl<<endl;
 						}
 						break;
 					}
 					case 8:{
 						if(baseOrigem == 10){
-							float numConversao;
-							cout<<"Digite o número a ser convertido: ";
-							cin>>numConversao;
-							cout<<"Resultado: " <<conversaoDecimalOctal(numConversao)<<endl<<endl;
-						}
-						else if(baseOrigem == 2){
+							double numConversaoTestado;
 							string numConversao;
 							cout<<"Digite o número a ser convertido: ";
 							cin>>numConversao;
-							cout<<"Resultado: " <<conversaoBinarioOctal(numConversao)<<endl<<endl;
+							if(teste_entrada(numConversao, baseOrigem)){
+								numConversaoTestado = stod(numConversao);
+								cout<<"Resultado: " <<conversaoDecimalOctal((numConversaoTestado))<<endl<<endl;
+							}
+						}
+						else if(baseOrigem == 2){
+							string numConversao;
+							cout<<"Digite o número a ser convertido (Use apenas letras maiúsculas e números): ";
+							cin>>numConversao;
+							if(teste_entrada(numConversao, baseOrigem)){
+								cout<<"Resultado: " <<conversaoBinarioOctal((numConversao))<<endl<<endl;
+							}
 						}
 						
 						else if(baseOrigem == 16){
 							string numConversao;
 							cout<<"Digite o número a ser convertido (Use apenas letras maiúsculas e números): ";
 							cin>>numConversao;
-							cout<<"Resultado: " <<conversaoHexadecimalOctal(numConversao)<<endl<<endl;
+							if(teste_entrada(numConversao, baseOrigem)){
+								cout<<"Resultado: " <<conversaoHexadecimalOctal((numConversao))<<endl<<endl;
+							}
 						}
 						
 						else{
-							cout<<"ERRO";
+							cout<<endl<<"ERRO! Base de entrada inválida." <<endl<<"Bases suportadas: 2, 8, 10, 16."<<endl<<"Tente novamente."<<endl<<endl;
 						}
 						break;
 					}
 					
 					case 16:{
 						if(baseOrigem == 10){
-							float numConversao;
+							double numConversaoTestado;
+							string numConversao;
 							cout<<"Digite o número a ser convertido: ";
 							cin>>numConversao;
-							cout<<"Resultado: " <<conversaoDecimalHexadecimal(numConversao)<<endl<<endl;
+							if(teste_entrada(numConversao, baseOrigem)){
+								numConversaoTestado = stod(numConversao);
+								cout<<"Resultado: " <<conversaoDecimalHexadecimal((numConversaoTestado))<<endl<<endl;
+							}
 						}
 						
 						else if(baseOrigem == 2){
 							string numConversao;
 							cout<<"Digite o número a ser convertido: ";
 							cin>>numConversao;
-							cout<<"Resultado: " <<conversaoBinarioHexadecimal(numConversao)<<endl<<endl;
+							if(teste_entrada(numConversao, baseOrigem)){
+								cout<<"Resultado: " <<conversaoBinarioHexadecimal((numConversao))<<endl<<endl;
+							}
 						}
 						else if(baseOrigem == 8){
 							string numConversao;
 							cout<<"Digite o número a ser convertido: ";
 							cin>>numConversao;
-							cout<<"Resultado: " <<conversaoOctalHexadecimal(numConversao)<<endl<<endl;
+							if(teste_entrada(numConversao, baseOrigem)){
+								cout<<"Resultado: " <<conversaoOctalHexadecimal((numConversao))<<endl<<endl;
+							}
 						}
 						else{
-							cout<<"ERRO";
+							cout<<endl<<"ERRO! Base de entrada inválida." <<endl<<"Bases suportadas: 2, 8, 10, 16."<<endl<<"Tente novamente."<<endl<<endl;
 						}
 						break;
 					}
@@ -131,27 +157,33 @@ int main() {
 							string numConversao;
 							cout<<"Digite o número a ser convertido: ";
 							cin>>numConversao;
-							cout<<"Resultado: " <<conversaoparaDecimal(numConversao,baseOrigem)<<endl<<endl;
+							if(teste_entrada(numConversao, baseOrigem)){
+								cout<<"Resultado: " <<conversaoparaDecimal((numConversao), baseOrigem)<<endl<<endl;
+							}
 						}
 						else if(baseOrigem == 8){
 							string numConversao;
 							cout<<"Digite o número a ser convertido: ";
 							cin>>numConversao;
-							cout<<"Resultado: " <<conversaoparaDecimal(numConversao,baseOrigem)<<endl<<endl;
+							if(teste_entrada(numConversao, baseOrigem)){
+								cout<<"Resultado: " <<conversaoparaDecimal((numConversao), baseOrigem)<<endl<<endl;
+							}
 						}
 						else if(baseOrigem == 16){
 							string numConversao;
-							cout<<"Digite o número a ser convertido (Use apenas letras maiúsculas e números) : ";
+							cout<<"Digite o número a ser convertido: ";
 							cin>>numConversao;
-							cout<<"Resultado: " <<conversaoparaDecimal(numConversao,baseOrigem)<<endl<<endl;
+							if(teste_entrada(numConversao, baseOrigem)){
+								cout<<"Resultado: " <<conversaoparaDecimal((numConversao), baseOrigem)<<endl<<endl;
+							}
 						}
 						else{
-							cout<<"ERRO";
+							cout<<endl<<"ERRO! Base de entrada inválida." <<endl<<"Bases suportadas: 2, 8, 10, 16."<<endl<<"Tente novamente."<<endl<<endl;
 						}
 						break;
 					}
 					default:
-						cout<<"ERRO";
+						cout<<endl<<"ERRO! Base de destino inválida." <<endl<<"Bases suportadas: 2, 8, 10, 16."<<endl<<"Tente novamente."<<endl<<endl;
 				}
 			}break;
 			case 2:
@@ -163,6 +195,11 @@ int main() {
 			case 4:
 				cout<<"Modo quiz selecionado!"<<endl;
 				break;
+			case 5:{
+				cout<<"Modo Calculadora de Máximos selecionado!"<<endl;
+				calculadoraMaximos();
+
+			}break;
 			default:
 				cout<<"Opção inválida, tente novamente."<<endl;
 		}

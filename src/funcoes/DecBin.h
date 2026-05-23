@@ -40,7 +40,10 @@ inline string conversaoDecimalBinario(float numero) {
             binarioFracionario += "0";
         }
     }
-
+    if (binarioFracionario.length() > 16) {
+            binarioFracionario.resize(16);
+            cout <<endl<< "Alerta: Número truncado para 16 caracteres após o ponto" << endl<<endl<<"Resultado:";
+        }
     return binarioInteiro + "." + binarioFracionario;
 }
 

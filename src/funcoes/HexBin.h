@@ -115,7 +115,12 @@ string conversaoHexadecimalBinario(string numero){
         numerofracionario = numero.substr(pos + 1);
 
         numero = numero.substr(0, pos);
-        return conversaoHexBinProcesses(numero) + "." + conversaoHexBinProcesses(numerofracionario);  
+        numerofracionario = conversaoHexBinProcesses(numerofracionario);
+        if (numerofracionario.length() > 16) {
+            numerofracionario.resize(16);
+            cout <<endl<< "Alerta: Número truncado para 16 caracteres após o ponto" << endl<<endl<<"Resultado:";
+        }
+        return conversaoHexBinProcesses(numero) + "." + numerofracionario;  
 
     }else{
         return conversaoHexBinProcesses(numero);
