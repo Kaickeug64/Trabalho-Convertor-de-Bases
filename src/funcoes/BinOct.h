@@ -4,44 +4,52 @@
 #include <iostream>
 #include <string>
 using namespace std;
-string conversaoBinarioOctal(double numero){
-    // Separar parte inteira e fracionária
-    int parteInteira = (int)numero;
-    double parteFracionaria = numero - parteInteira;
-
-    // Converter parte inteira binária para octal
-    string octalInteiro = "";
-    if(parteInteira == 0){
-		octalInteiro = "0";
-	}
-    int n = parteInteira;
-    string temp = "";
-    while(n > 0){
-        // Pegar 3 últimos dígitos binários
-        int grupo = n % 1000; // 3 dígitos binários
-        int decimal = 0, base = 1;
-        while(grupo > 0){
-            decimal += (grupo % 10) * base;
-            base *= 2;
-            grupo /= 10;
-        }
-        temp = to_string(decimal) + temp;
-        n /= 1000;
+string conversaoBinOctProcesses(string numero){
+    int resto = numero.length() % 3;
+    
+    if (resto != 0) {
+        int casasFaltantes = 3 - resto;
+        numero = string(casasFaltantes, '0') + numero;
     }
-    octalInteiro = temp;
+    
+    string resultado = "";
+    
+    for(int i = numero.length() - 1; i >= 0; i -= 3) {
 
-    // Converter parte fracionária binária para octal
-    string octalFracionaria = "";
-    int limite = 10; // número de casas
-    double frac = parteFracionaria;
-    while(frac > 0 && limite--){
-        frac *= 8;
-        int digito = (int)frac;
-        octalFracionaria += to_string(digito);
-        frac -= digito;
+        string bloco = string() + numero[i-2] + numero[i-1] + numero[i];
+        
+        string hexAtual = "";
+
+        if(bloco == "000") hexAtual = "0";
+        else if(bloco == "001") hexAtual = "1";
+        else if(bloco == "010") hexAtual = "2";
+        else if(bloco == "011") hexAtual = "3";
+        else if(bloco == "100") hexAtual = "4";
+        else if(bloco == "101") hexAtual = "5";
+        else if(bloco == "110") hexAtual = "6";
+        else if(bloco == "111") hexAtual = "7";
+        
+        resultado = hexAtual + resultado; 
     }
+    
+    return resultado;
+}
+string conversaoBinarioOctal(string numero){
+    string numerofracionario = "";
+    char divisor = '.';
+    size_t pos = numero.find(divisor);
+    if (pos != string::npos) {
 
-    return octalInteiro + "." + octalFracionaria;
+        numerofracionario = numero.substr(pos + 1);
+
+        numero = numero.substr(0, pos);
+        return conversaoBinOctProcesses(numero) + "." + conversaoBinOctProcesses(numerofracionario);  
+
+    }else{
+        return conversaoBinOctProcesses(numero);
+    }
+     
+    
 }
 
 #endif

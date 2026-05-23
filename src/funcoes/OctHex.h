@@ -4,10 +4,10 @@
 #include <iostream>
 #include <string>
 #include "OctBin.h"
+#include "BinHex.h"
 using namespace std;
 string conversaoOctalHexadecimal(string numero){
-    numero = conversaoOctalBinario(stof(numero));
-    numero.pop_back();
+    numero = conversaoOctalBinario(numero);
     return conversaoBinarioHexadecimal(numero);
 }
 

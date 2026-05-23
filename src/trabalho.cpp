@@ -10,6 +10,7 @@
 #include "funcoes/HexOct.h"
 #include "funcoes/BinHex.h"
 #include "funcoes/OctHex.h"
+#include "funcoes/xDec.h"
 using namespace std;
 
 
@@ -50,14 +51,14 @@ int main() {
 							double numConversao;
 							cout<<"Digite o número a ser convertido: ";
 							cin>>numConversao;
-							conversaoDecimalBinario(numConversao);
+							cout<<"Resultado: " <<conversaoDecimalBinario((numConversao))<<endl<<endl;
 					}
 						
 						else if(baseOrigem == 8){
-							float numConversao;
+							string numConversao;
 							cout<<"Digite o número a ser convertido: ";
 							cin>>numConversao;
-							conversaoOctalBinario(numConversao);
+							cout<<"Resultado: " <<conversaoOctalBinario((numConversao))<<endl<<endl;
 						}
 						else if(baseOrigem == 16){
 							
@@ -76,10 +77,10 @@ int main() {
 							float numConversao;
 							cout<<"Digite o número a ser convertido: ";
 							cin>>numConversao;
-							conversaoDecimalOctal(numConversao);
+							cout<<"Resultado: " <<conversaoDecimalOctal(numConversao)<<endl<<endl;
 						}
 						else if(baseOrigem == 2){
-							float numConversao;
+							string numConversao;
 							cout<<"Digite o número a ser convertido: ";
 							cin>>numConversao;
 							cout<<"Resultado: " <<conversaoBinarioOctal(numConversao)<<endl<<endl;
@@ -114,7 +115,7 @@ int main() {
 						}
 						else if(baseOrigem == 8){
 							string numConversao;
-							cout<<"Digite o número a ser convertid: ";
+							cout<<"Digite o número a ser convertido: ";
 							cin>>numConversao;
 							cout<<"Resultado: " <<conversaoOctalHexadecimal(numConversao)<<endl<<endl;
 						}
@@ -124,23 +125,31 @@ int main() {
 						break;
 					}
 					
-					/*
+					
 					case 10:{
 						if(baseOrigem == 2){
-							conversaoBinarioDecimal(numConversao);
+							string numConversao;
+							cout<<"Digite o número a ser convertido: ";
+							cin>>numConversao;
+							cout<<"Resultado: " <<conversaoparaDecimal(numConversao,baseOrigem)<<endl<<endl;
 						}
 						else if(baseOrigem == 8){
-							conversaoOctalDecimal(numConversao);
+							string numConversao;
+							cout<<"Digite o número a ser convertido: ";
+							cin>>numConversao;
+							cout<<"Resultado: " <<conversaoparaDecimal(numConversao,baseOrigem)<<endl<<endl;
 						}
 						else if(baseOrigem == 16){
-							conversaoHexadecimalDecimal(numConversao);
+							string numConversao;
+							cout<<"Digite o número a ser convertido (Use apenas letras maiúsculas e números) : ";
+							cin>>numConversao;
+							cout<<"Resultado: " <<conversaoparaDecimal(numConversao,baseOrigem)<<endl<<endl;
 						}
 						else{
 							cout<<"ERRO";
 						}
 						break;
 					}
-					*/
 					default:
 						cout<<"ERRO";
 				}

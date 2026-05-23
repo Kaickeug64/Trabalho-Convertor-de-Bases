@@ -66,7 +66,7 @@ string somaBinario(string atual, string soma)
     return atual;   
 }
 
-string conversaoHexadecimalBinario(string numeroString){
+string conversaoHexBinProcesses(string numeroString){
     int tamanho = numeroString.length();
     string *bin = new string[tamanho];
     
@@ -104,5 +104,22 @@ string conversaoHexadecimalBinario(string numeroString){
 
     delete[] bin;
     return somatorioBin;
+}
+
+string conversaoHexadecimalBinario(string numero){
+    string numerofracionario = "";
+    char divisor = '.';
+    size_t pos = numero.find(divisor);
+    if (pos != string::npos) {
+
+        numerofracionario = numero.substr(pos + 1);
+
+        numero = numero.substr(0, pos);
+        return conversaoHexBinProcesses(numero) + "." + conversaoHexBinProcesses(numerofracionario);  
+
+    }else{
+        return conversaoHexBinProcesses(numero);
+    }
+    
 }
 #endif

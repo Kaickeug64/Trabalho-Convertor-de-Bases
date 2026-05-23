@@ -4,9 +4,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
-
-string conversaoBinarioHexadecimal(string numero) {
-
+string conversaoBinHexProcesses(string numero){
     int resto = numero.length() % 4;
     
     if (resto != 0) {
@@ -43,6 +41,23 @@ string conversaoBinarioHexadecimal(string numero) {
     }
     
     return resultado;
+}
+
+string conversaoBinarioHexadecimal(string numero) {
+    
+    string numerofracionario = "";
+    char divisor = '.';
+    size_t pos = numero.find(divisor);
+    if (pos != string::npos) {
+
+        numerofracionario = numero.substr(pos + 1);
+
+        numero = numero.substr(0, pos);
+        return conversaoBinHexProcesses(numero) + "." + conversaoBinHexProcesses(numerofracionario);  
+
+    }else{
+        return conversaoBinHexProcesses(numero);
+    }
 }
 
 #endif

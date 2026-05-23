@@ -6,9 +6,8 @@
 #include "HexBin.h"
 using namespace std;
 string conversaoHexadecimalOctal(string numero){
-   double n = stof(conversaoHexadecimalBinario(numero));
-   cout<<"teste :"<<n<<endl;
-   return conversaoBinarioOctal(n);
+   numero = conversaoHexadecimalBinario(numero);
+   return conversaoBinarioOctal(numero);
 }
 
 #endif
