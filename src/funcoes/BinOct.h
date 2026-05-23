@@ -4,10 +4,10 @@
 #include <iostream>
 #include <string>
 using namespace std;
-string conversaoBinarioOctal(float numero){
+string conversaoBinarioOctal(double numero){
     // Separar parte inteira e fracionária
     int parteInteira = (int)numero;
-    float parteFracionaria = numero - parteInteira;
+    double parteFracionaria = numero - parteInteira;
 
     // Converter parte inteira binária para octal
     string octalInteiro = "";
@@ -33,7 +33,7 @@ string conversaoBinarioOctal(float numero){
     // Converter parte fracionária binária para octal
     string octalFracionaria = "";
     int limite = 10; // número de casas
-    float frac = parteFracionaria;
+    double frac = parteFracionaria;
     while(frac > 0 && limite--){
         frac *= 8;
         int digito = (int)frac;

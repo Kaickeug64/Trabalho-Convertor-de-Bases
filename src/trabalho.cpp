@@ -7,7 +7,9 @@
 #include "funcoes/BinOct.h"
 #include "funcoes/OctBin.h"
 #include "funcoes/HexBin.h"
-
+#include "funcoes/HexOct.h"
+#include "funcoes/BinHex.h"
+#include "funcoes/OctHex.h"
 using namespace std;
 
 
@@ -45,7 +47,7 @@ int main() {
 					
 					case 2:{
 						if(baseOrigem == 10){
-							float numConversao;
+							double numConversao;
 							cout<<"Digite o número a ser convertido: ";
 							cin>>numConversao;
 							conversaoDecimalBinario(numConversao);
@@ -80,13 +82,16 @@ int main() {
 							float numConversao;
 							cout<<"Digite o número a ser convertido: ";
 							cin>>numConversao;
-							conversaoBinarioOctal(numConversao);
+							cout<<"Resultado: " <<conversaoBinarioOctal(numConversao)<<endl<<endl;
 						}
-						/*
+						
 						else if(baseOrigem == 16){
-							conversaoHexadecimalOctal(numConversao);
+							string numConversao;
+							cout<<"Digite o número a ser convertido (Use apenas letras maiúsculas e números): ";
+							cin>>numConversao;
+							cout<<"Resultado: " <<conversaoHexadecimalOctal(numConversao)<<endl<<endl;
 						}
-						*/
+						
 						else{
 							cout<<"ERRO";
 						}
@@ -98,16 +103,21 @@ int main() {
 							float numConversao;
 							cout<<"Digite o número a ser convertido: ";
 							cin>>numConversao;
-							conversaoDecimalHexadecimal(numConversao);
+							cout<<"Resultado: " <<conversaoDecimalHexadecimal(numConversao)<<endl<<endl;
 						}
-						/*
+						
 						else if(baseOrigem == 2){
-							conversaoBinarioHexadecimal(numConversao);
+							string numConversao;
+							cout<<"Digite o número a ser convertido: ";
+							cin>>numConversao;
+							cout<<"Resultado: " <<conversaoBinarioHexadecimal(numConversao)<<endl<<endl;
 						}
 						else if(baseOrigem == 8){
-							conversaoOctalHexadecimal(numConversao);
+							string numConversao;
+							cout<<"Digite o número a ser convertid: ";
+							cin>>numConversao;
+							cout<<"Resultado: " <<conversaoOctalHexadecimal(numConversao)<<endl<<endl;
 						}
-						*/
 						else{
 							cout<<"ERRO";
 						}
