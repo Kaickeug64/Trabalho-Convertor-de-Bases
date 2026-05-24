@@ -1,5 +1,5 @@
-#ifndef ConvetorDeNumeros_H
-#define ConvetorDeNumeros_H
+#ifndef PASSOAPASSO_H
+#define PASSOAPASSO_H
 
 #include <iostream>
 #include <string>
@@ -17,12 +17,13 @@
 
 #include "testeEntrada.h"
 
+using namespace std;
 
-void conversorDeNumeros()
+void passoAPasso()
 {
-    int type = 1;
+    int type = 2;
     cout << endl
-         << "Modo conversão simples selecionado!" << endl
+         << "Modo passo-a-passo selecionado!" << endl
          << endl;
 
     int baseOrigem = 0;
@@ -43,7 +44,7 @@ void conversorDeNumeros()
         {
             double numConversaoTestado;
             string numConversao;
-            cout << "Digite o número a ser convertido (use . para frações): ";
+            cout << "Digite o numero a ser convertido (use . para fracoes): ";
             cin >> numConversao;
             if (teste_entrada(numConversao, baseOrigem))
             {
@@ -56,7 +57,7 @@ void conversorDeNumeros()
         else if (baseOrigem == 8)
         {
             string numConversao;
-            cout << "Digite o número a ser convertido (use . para frações): ";
+            cout << "Digite o numero a ser convertido (use . para fracoes): ";
             cin >> numConversao;
             if (teste_entrada(numConversao, baseOrigem))
             {
@@ -68,7 +69,7 @@ void conversorDeNumeros()
         {
 
             string numConversao;
-            cout << "Digite o número a ser convertido (use . para frações Use apenas letras maiúsculas e números): ";
+            cout << "Digite o numero a ser convertido (use . para fracoes Use apenas letras maiusculas e numeros): ";
             cin >> numConversao;
             if (teste_entrada(numConversao, baseOrigem))
             {
@@ -79,7 +80,7 @@ void conversorDeNumeros()
         else
         {
             cout << endl
-                 << "ERRO! Base de entrada inválida." << endl
+                 << "ERRO! Base de entrada invalida." << endl
                  << "Bases suportadas: 2, 8, 10, 16." << endl
                  << "Tente novamente." << endl
                  << endl;
@@ -92,7 +93,7 @@ void conversorDeNumeros()
         {
             double numConversaoTestado;
             string numConversao;
-            cout << "Digite o número a ser convertido (use . para frações): ";
+            cout << "Digite o numero a ser convertido (use . para fracoes): ";
             cin >> numConversao;
             if (teste_entrada(numConversao, baseOrigem))
             {
@@ -104,7 +105,7 @@ void conversorDeNumeros()
         else if (baseOrigem == 2)
         {
             string numConversao;
-            cout << "Digite o número a ser convertido (Use . para frações e apenas letras maiúsculas e números): ";
+            cout << "Digite o numero a ser convertido (Use . para fracoes e apenas letras maiusculas e numeros): ";
             cin >> numConversao;
             if (teste_entrada(numConversao, baseOrigem))
             {
@@ -116,7 +117,7 @@ void conversorDeNumeros()
         else if (baseOrigem == 16)
         {
             string numConversao;
-            cout << "Digite o número a ser convertido (Use . para frações e apenas letras maiúsculas e números): ";
+            cout << "Digite o numero a ser convertido (Use . para fracoes e apenas letras maiusculas e numeros): ";
             cin >> numConversao;
             if (teste_entrada(numConversao, baseOrigem))
             {
@@ -128,7 +129,7 @@ void conversorDeNumeros()
         else
         {
             cout << endl
-                 << "ERRO! Base de entrada inválida." << endl
+                 << "ERRO! Base de entrada invalida." << endl
                  << "Bases suportadas: 2, 8, 10, 16." << endl
                  << "Tente novamente." << endl
                  << endl;
@@ -142,7 +143,7 @@ void conversorDeNumeros()
         {
             double numConversaoTestado;
             string numConversao;
-            cout << "Digite o número a ser convertido (use . para frações): ";
+            cout << "Digite o numero a ser convertido (use . para fracoes): ";
             cin >> numConversao;
             if (teste_entrada(numConversao, baseOrigem))
             {
@@ -155,7 +156,7 @@ void conversorDeNumeros()
         else if (baseOrigem == 2)
         {
             string numConversao;
-            cout << "Digite o número a ser convertido (use . para frações): ";
+            cout << "Digite o numero a ser convertido (use . para fracoes): ";
             cin >> numConversao;
             if (teste_entrada(numConversao, baseOrigem))
             {
@@ -166,7 +167,7 @@ void conversorDeNumeros()
         else if (baseOrigem == 8)
         {
             string numConversao;
-            cout << "Digite o número a ser convertido (use . para frações): ";
+            cout << "Digite o numero a ser convertido (use . para fracoes): ";
             cin >> numConversao;
             if (teste_entrada(numConversao, baseOrigem))
             {
@@ -177,7 +178,7 @@ void conversorDeNumeros()
         else
         {
             cout << endl
-                 << "ERRO! Base de entrada inválida." << endl
+                 << "ERRO! Base de entrada invalida." << endl
                  << "Bases suportadas: 2, 8, 10, 16." << endl
                  << "Tente novamente." << endl
                  << endl;
@@ -190,7 +191,7 @@ void conversorDeNumeros()
         if (baseOrigem == 2)
         {
             string numConversao;
-            cout << "Digite o número a ser convertido (use . para frações): ";
+            cout << "Digite o numero a ser convertido (use . para fracoes): ";
             cin >> numConversao;
             if (teste_entrada(numConversao, baseOrigem))
             {
@@ -201,7 +202,7 @@ void conversorDeNumeros()
         else if (baseOrigem == 8)
         {
             string numConversao;
-            cout << "Digite o número a ser convertido (use . para frações): ";
+            cout << "Digite o numero a ser convertido (use . para fracoes): ";
             cin >> numConversao;
             if (teste_entrada(numConversao, baseOrigem))
             {
@@ -212,7 +213,7 @@ void conversorDeNumeros()
         else if (baseOrigem == 16)
         {
             string numConversao;
-            cout << "Digite o número a ser convertido (Use . para frações e apenas letras maiúsculas e números): ";
+            cout << "Digite o numero a ser convertido (Use . para fracoes e apenas letras maiusculas e numeros): ";
             cin >> numConversao;
             if (teste_entrada(numConversao, baseOrigem))
             {
@@ -223,7 +224,7 @@ void conversorDeNumeros()
         else
         {
             cout << endl
-                 << "ERRO! Base de entrada inválida." << endl
+                 << "ERRO! Base de entrada invalida." << endl
                  << "Bases suportadas: 2, 8, 10, 16." << endl
                  << "Tente novamente." << endl
                  << endl;
@@ -232,7 +233,7 @@ void conversorDeNumeros()
     }
     default:
         cout << endl
-             << "ERRO! Base de destino inválida." << endl
+             << "ERRO! Base de destino invalida." << endl
              << "Bases suportadas: 2, 8, 10, 16." << endl
              << "Tente novamente." << endl
              << endl;

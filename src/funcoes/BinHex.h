@@ -4,7 +4,8 @@
 #include <iostream>
 #include <string>
 using namespace std;
-string conversaoBinHexProcesses(string numero)
+
+string conversaoBinHexProcesses(string numero, int type)
 {
     int resto = numero.length() % 4;
 
@@ -14,13 +15,15 @@ string conversaoBinHexProcesses(string numero)
         numero = string(casasFaltantes, '0') + numero;
     }
 
+    if (type == 2) {
+        cout << "Alinhamento em blocos de 4 bits: " << numero << endl;
+    }
+
     string resultado = "";
 
     for (int i = numero.length() - 1; i >= 0; i -= 4)
     {
-
         string bloco = string() + numero[i - 3] + numero[i - 2] + numero[i - 1] + numero[i];
-
         string hexAtual = "";
 
         if (bloco == "0000")
@@ -56,35 +59,61 @@ string conversaoBinHexProcesses(string numero)
         else if (bloco == "1111")
             hexAtual = "F";
 
+        if (type == 2) {
+            cout << "Bloco '" << bloco << "' -> Digito: " << hexAtual << endl;
+        }
+
         resultado = hexAtual + resultado;
     }
 
     return resultado;
 }
 
-string conversaoBinarioHexadecimal(string numero)
+string conversaoBinarioHexadecimal(string numero, int type)
 {
-
     string numerofracionario = "";
     char divisor = '.';
     size_t pos = numero.find(divisor);
+
     if (pos != string::npos)
     {
-
+        string parteInteira = numero.substr(0, pos);
         numerofracionario = numero.substr(pos + 1);
 
-        numero = numero.substr(0, pos);
-        numerofracionario = conversaoBinHexProcesses(numerofracionario);
+        if (type == 2) {
+            cout << "--- Parte Inteira (" << parteInteira << ") ---" << endl;
+        }
+        string hexInteiro = conversaoBinHexProcesses(parteInteira, type);
+
+        if (type == 2) {
+            cout << "--- Parte Fracionaria (" << numerofracionario << ") ---" << endl;
+        }
+        numerofracionario = conversaoBinHexProcesses(numerofracionario, type);
+
         if (numerofracionario.length() > 16) {
             numerofracionario.resize(16);
-            cout <<endl<< "Alerta: Número truncado para 16 caracteres após o ponto" << endl<<endl<<"Resultado:";
+            cout << endl << "Alerta: Número truncado para 16 caracteres após o ponto" << endl << endl << "Resultado:";
         }
-        return conversaoBinHexProcesses(numero) + "." + numerofracionario;  
-    }else
+
+        if (type == 2) {
+            cout << "--------------------------------------------" << endl;
+        }
+
+        return hexInteiro + "." + numerofracionario;  
+    }
+    else
     {
-    return conversaoBinHexProcesses(numero);
+        if (type == 2) {
+            cout << "--- Parte Inteira (" << numero << ") ---" << endl;
+        }
+        string hexInteiro = conversaoBinHexProcesses(numero, type);
+
+        if (type == 2) {
+            cout << "--------------------------------------------" << endl;
+        }
+
+        return hexInteiro;
     }
 }
-
 
 #endif

@@ -4,12 +4,17 @@
 #include <iostream>
 #include <string>
 using namespace std;
-string conversaoBinOctProcesses(string numero){
+
+string conversaoBinOctProcesses(string numero, int type){
     int resto = numero.length() % 3;
     
     if (resto != 0) {
         int casasFaltantes = 3 - resto;
         numero = string(casasFaltantes, '0') + numero;
+    }
+    
+    if (type == 2) {
+        cout << "Alinhamento em blocos de 3 bits: " << numero << endl;
     }
     
     string resultado = "";
@@ -29,32 +34,58 @@ string conversaoBinOctProcesses(string numero){
         else if(bloco == "110") hexAtual = "6";
         else if(bloco == "111") hexAtual = "7";
         
+        if (type == 2) {
+            cout << "Bloco '" << bloco << "' -> Digito: " << hexAtual << endl;
+        }
+
         resultado = hexAtual + resultado; 
     }
     
     return resultado;
 }
-string conversaoBinarioOctal(string numero){
+
+string conversaoBinarioOctal(string numero, int type){
     string numerofracionario = "";
     char divisor = '.';
     size_t pos = numero.find(divisor);
     if (pos != string::npos) {
 
+        string parteInteira = numero.substr(0, pos);
         numerofracionario = numero.substr(pos + 1);
 
-        numero = numero.substr(0, pos);
-        numerofracionario = conversaoBinOctProcesses(numerofracionario);
+        if (type == 2) {
+            cout << "--- Parte Inteira (" << parteInteira << ") ---" << endl;
+        }
+        string octInteiro = conversaoBinOctProcesses(parteInteira, type);
+
+        if (type == 2) {
+            cout << "--- Parte Fracionaria (" << numerofracionario << ") ---" << endl;
+        }
+        numerofracionario = conversaoBinOctProcesses(numerofracionario, type);
+        
         if (numerofracionario.length() > 16) {
             numerofracionario.resize(16);
             cout <<endl<< "Alerta: Número truncado para 16 caracteres após o ponto" << endl<<endl<<"Resultado:";
         }
-        return conversaoBinOctProcesses(numero) + "." + numerofracionario;  
+
+        if (type == 2) {
+            cout << "--------------------------------------------" << endl;
+        }
+
+        return octInteiro + "." + numerofracionario;  
 
     }else{
-        return conversaoBinOctProcesses(numero);
+        if (type == 2) {
+            cout << "--- Parte Inteira (" << numero << ") ---" << endl;
+        }
+        string octInteiro = conversaoBinOctProcesses(numero, type);
+
+        if (type == 2) {
+            cout << "--------------------------------------------" << endl;
+        }
+
+        return octInteiro;
     }
-     
-    
 }
 
 #endif

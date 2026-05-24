@@ -16,7 +16,7 @@ inline int charParaDigito(char caractere, int baseOrigem) {
     return -1; 
 }
 
-double conversaoparaDecimal(string numero, int baseOrigem){
+double conversaoparaDecimal(string numero, int baseOrigem, int type){
 
     string parteInteira = "";
     string parteFracionaria = "";
@@ -36,6 +36,10 @@ double conversaoparaDecimal(string numero, int baseOrigem){
 
     double somatorio = 0.0;
 
+    if (type == 2 && !parteInteira.empty()) {
+        cout << "--- Teorema Fundamental da Numeracao (Parte Inteira) ---" << endl;
+    }
+
     int tamInteiro = parteInteira.length();
     for (int i = 0; i < tamInteiro; i++) {
         char caractere = parteInteira[tamInteiro - 1 - i];
@@ -46,9 +50,16 @@ double conversaoparaDecimal(string numero, int baseOrigem){
             return -1.0;
         }
 
-        somatorio += digito * pow(baseOrigem, i);
+        double termo = digito * pow(baseOrigem, i);
+        if (type == 2) {
+            cout << "Digito '" << caractere << "' de peso " << baseOrigem << "^" << i << " -> " << digito << " * " << pow(baseOrigem, i) << " = " << termo << endl;
+        }
+        somatorio += termo;
     }
 
+    if (type == 2 && !parteFracionaria.empty()) {
+        cout << "--- Teorema Fundamental da Numeracao (Parte Fracionaria) ---" << endl;
+    }
 
     int tamFracionario = parteFracionaria.length();
     for (int i = 0; i < tamFracionario; i++) {
@@ -60,7 +71,15 @@ double conversaoparaDecimal(string numero, int baseOrigem){
             return -1.0;
         }
 
-        somatorio += digito * pow(baseOrigem, -(i + 1));
+        double termo = digito * pow(baseOrigem, -(i + 1));
+        if (type == 2) {
+            cout << "Digito '" << caractere << "' de peso " << baseOrigem << "^-" << (i + 1) << " -> " << digito << " * " << pow(baseOrigem, -(i + 1)) << " = " << termo << endl;
+        }
+        somatorio += termo;
+    }
+
+    if (type == 2) {
+        cout << "--------------------------------------------" << endl;
     }
 
     return somatorio;

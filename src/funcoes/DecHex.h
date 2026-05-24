@@ -4,34 +4,67 @@
 #include <iostream>
 #include <string>
 using namespace std;
-inline string conversaoDecimalHexadecimal(float numero){
+
+inline string conversaoDecimalHexadecimal(float numero, int type){
     int parteInteira = (int)numero;
     float parteFracionaria = numero - parteInteira;
-
     string hexadecimalInteiro = "";
+
     if(parteInteira == 0){
         hexadecimalInteiro = "0";
+        if (type == 2) {
+            cout << "Parte inteira e 0 -> digito: 0" << endl;
+        }
     }
 
-    // Conversão da parte inteira
+    if (type == 2 && parteInteira > 0) {
+        cout << "--- Divisoes Sucessivas (Parte Inteira) ---" << endl;
+    }
+
+    string digitosHex = "0123456789ABCDEF";
+
     while(parteInteira > 0){
-        hexadecimalInteiro = to_string(parteInteira % 16) + hexadecimalInteiro;
+        int resto = parteInteira % 16;
+        if (type == 2) {
+            cout << parteInteira << " / 16 = " << (parteInteira / 16) << " | Resto: " << resto << " -> '" << digitosHex[resto] << "'" << endl;
+        }
+        hexadecimalInteiro = digitosHex[resto] + hexadecimalInteiro;
         parteInteira /= 16;
     }
 
-    // Conversão da parte fracionária
     string hexadecimalFracionario = "";
-    int limite = 10; // número de casas
+    int limite = 10;
+
+    if (type == 2 && parteFracionaria > 0) {
+        cout << "--- Multiplicacoes Sucessivas (Parte Fracionaria) ---" << endl;
+    }
+
     while(parteFracionaria > 0 && limite--){
+        float anterior = parteFracionaria;
         parteFracionaria *= 16;
         int digito = (int)parteFracionaria;
-        hexadecimalFracionario += to_string(digito);
+
+        if (type == 2) {
+            cout << anterior << " * 16 = " << parteFracionaria << " -> Digito: " << digito << " -> '" << digitosHex[digito] << "'" << endl;
+        }
+
+        hexadecimalFracionario += digitosHex[digito];
         parteFracionaria -= digito;
     }
+
     if (hexadecimalFracionario.length() > 16) {
-            hexadecimalFracionario.resize(16);
-            cout <<endl<< "Alerta: Número truncado para 16 caracteres após o ponto" << endl<<endl<<"Resultado:";
-        }
+        hexadecimalFracionario.resize(16);
+        cout << endl << "Alerta: Numero truncado para 16 caracteres apos o ponto" << endl << endl << "Resultado:";
+    }
+
+    if (type == 2) {
+        cout << "--------------------------------------------" << endl;
+    }
+
+    if (hexadecimalFracionario.empty()) {
+        return hexadecimalInteiro;
+    }
+
     return hexadecimalInteiro + "." + hexadecimalFracionario;
 }
 

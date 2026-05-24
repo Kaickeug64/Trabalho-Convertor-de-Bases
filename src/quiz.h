@@ -22,6 +22,8 @@
 
 using namespace std;
 
+static int type = 1;
+
 struct DadosRodada {
     string nomeOrigem;
     string nomeDestino;
@@ -63,21 +65,21 @@ string obterNomeBase(int base) {
 
 string converterDecimalParaBase(int num, int base) {
     if (base == 10) return to_string(num);
-    if (base == 2)  return conversaoDecimalBinario((float)num);
-    if (base == 8)  return conversaoDecimalOctal((float)num);
-    return conversaoDecimalHexadecimal((float)num);
+    if (base == 2)  return conversaoDecimalBinario((float)num, type);
+    if (base == 8)  return conversaoDecimalOctal((float)num, type);
+    return conversaoDecimalHexadecimal((float)num, type);
 }
 
 string obterGabarito(string pergunta, int origem, int destino) {
     if (origem == 10) return converterDecimalParaBase(stoi(pergunta), destino);
-    if (destino == 10) return to_string((int)conversaoparaDecimal(pergunta, origem));
+    if (destino == 10) return to_string((int)conversaoparaDecimal(pergunta, origem, type));
     
-    if (origem == 2 && destino == 8)  return conversaoBinarioOctal(pergunta);
-    if (origem == 2 && destino == 16) return conversaoBinarioHexadecimal(pergunta);
-    if (origem == 8 && destino == 2)  return conversaoOctalBinario(pergunta);
-    if (origem == 8 && destino == 16) return conversaoOctalHexadecimal(pergunta);
-    if (origem == 16 && destino == 2) return conversaoHexadecimalBinario(pergunta);
-    if (origem == 16 && destino == 8) return conversaoHexadecimalOctal(pergunta);
+    if (origem == 2 && destino == 8)  return conversaoBinarioOctal(pergunta, type);
+    if (origem == 2 && destino == 16) return conversaoBinarioHexadecimal(pergunta, type);
+    if (origem == 8 && destino == 2)  return conversaoOctalBinario(pergunta, type);
+    if (origem == 8 && destino == 16) return conversaoOctalHexadecimal(pergunta, type);
+    if (origem == 16 && destino == 2) return conversaoHexadecimalBinario(pergunta, type);
+    if (origem == 16 && destino == 8) return conversaoHexadecimalOctal(pergunta, type);
     
     return "";
 }

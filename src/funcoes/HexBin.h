@@ -66,11 +66,9 @@ string somaBinario(string atual, string soma)
     return atual;   
 }
 
-string conversaoHexBinProcesses(string numeroString){
+string conversaoHexBinProcesses(string numeroString, int type){
     int tamanho = numeroString.length();
     string *bin = new string[tamanho];
-    
-
     string somatorioBin = ""; 
 
     for (int i = 0; i < tamanho; i++)
@@ -95,6 +93,10 @@ string conversaoHexBinProcesses(string numeroString){
         case 'F': bin[i] = "1111"; break;
         default: break;
         }
+
+        if (type == 2) {
+            cout << "Digito '" << numeroString[i] << "' -> " << bin[i] << endl;
+        }
     }
     
     for (int i = 0; i < tamanho; i++)
@@ -106,25 +108,47 @@ string conversaoHexBinProcesses(string numeroString){
     return somatorioBin;
 }
 
-string conversaoHexadecimalBinario(string numero){
+string conversaoHexadecimalBinario(string numero, int type){
     string numerofracionario = "";
     char divisor = '.';
     size_t pos = numero.find(divisor);
     if (pos != string::npos) {
 
+        string parteInteira = numero.substr(0, pos);
         numerofracionario = numero.substr(pos + 1);
 
-        numero = numero.substr(0, pos);
-        numerofracionario = conversaoHexBinProcesses(numerofracionario);
+        if (type == 2) {
+            cout << "--- Parte Inteira (" << parteInteira << ") ---" << endl;
+        }
+        string binInteiro = conversaoHexBinProcesses(parteInteira, type);
+
+        if (type == 2) {
+            cout << "--- Parte Fracionaria (" << numerofracionario << ") ---" << endl;
+        }
+        numerofracionario = conversaoHexBinProcesses(numerofracionario, type);
+        
         if (numerofracionario.length() > 16) {
             numerofracionario.resize(16);
-            cout <<endl<< "Alerta: Número truncado para 16 caracteres após o ponto" << endl<<endl<<"Resultado:";
+            cout << endl << "Alerta: Numero truncado para 16 caracteres apos o ponto" << endl << endl << "Resultado:";
         }
-        return conversaoHexBinProcesses(numero) + "." + numerofracionario;  
 
-    }else{
-        return conversaoHexBinProcesses(numero);
+        if (type == 2) {
+            cout << "--------------------------------------------" << endl;
+        }
+
+        return binInteiro + "." + numerofracionario;  
+
+    } else {
+        if (type == 2) {
+            cout << "--- Parte Inteira (" << numero << ") ---" << endl;
+        }
+        string binInteiro = conversaoHexBinProcesses(numero, type);
+
+        if (type == 2) {
+            cout << "--------------------------------------------" << endl;
+        }
+
+        return binInteiro;
     }
-    
 }
 #endif

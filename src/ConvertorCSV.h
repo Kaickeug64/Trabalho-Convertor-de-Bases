@@ -24,6 +24,7 @@ using namespace std;
 
 void conversorDeNumerosCSV()
 {
+    int type = 1;
     cout << endl
          << "Modo arquivo CSV!" << endl
          << endl;
@@ -75,21 +76,21 @@ void conversorDeNumerosCSV()
                 if (teste_entrada(numConversao, baseOrigem))
                 {
                     numConversaoTestado = stod(numConversao);
-                    arquivoSaida << numConversao << "," << baseOrigem << "," << baseDestino << "," << conversaoDecimalBinario(numConversaoTestado) << endl;
+                    arquivoSaida << numConversao << "," << baseOrigem << "," << baseDestino << "," << conversaoDecimalBinario(numConversaoTestado, type) << endl;
                 }
             }
             else if (baseOrigem == 8)
             {
                 if (teste_entrada(numConversao, baseOrigem))
                 {
-                    arquivoSaida << numConversao << "," << baseOrigem << "," << baseDestino << "," << conversaoOctalBinario(numConversao) << endl;
+                    arquivoSaida << numConversao << "," << baseOrigem << "," << baseDestino << "," << conversaoOctalBinario(numConversao, type) << endl;
                 }
             }
             else if (baseOrigem == 16)
             {
                 if (teste_entrada(numConversao, baseOrigem))
                 {
-                    arquivoSaida << numConversao << "," << baseOrigem << "," << baseDestino << "," << conversaoHexadecimalBinario(numConversao) << endl;
+                    arquivoSaida << numConversao << "," << baseOrigem << "," << baseDestino << "," << conversaoHexadecimalBinario(numConversao, type) << endl;
                 }
             }
             else
@@ -107,21 +108,21 @@ void conversorDeNumerosCSV()
                 if (teste_entrada(numConversao, baseOrigem))
                 {
                     numConversaoTestado = stod(numConversao);
-                    arquivoSaida << numConversao << "," << baseOrigem << "," << baseDestino << "," << conversaoDecimalOctal(numConversaoTestado) << endl;
+                    arquivoSaida << numConversao << "," << baseOrigem << "," << baseDestino << "," << conversaoDecimalOctal(numConversaoTestado, type) << endl;
                 }
             }
             else if (baseOrigem == 2)
             {
                 if (teste_entrada(numConversao, baseOrigem))
                 {
-                    arquivoSaida << numConversao << "," << baseOrigem << "," << baseDestino << "," << conversaoBinarioOctal(numConversao) << endl;
+                    arquivoSaida << numConversao << "," << baseOrigem << "," << baseDestino << "," << conversaoBinarioOctal(numConversao, type) << endl;
                 }
             }
             else if (baseOrigem == 16)
             {
                 if (teste_entrada(numConversao, baseOrigem))
                 {
-                    arquivoSaida << numConversao << "," << baseOrigem << "," << baseDestino << "," << conversaoHexadecimalOctal(numConversao) << endl;
+                    arquivoSaida << numConversao << "," << baseOrigem << "," << baseDestino << "," << conversaoHexadecimalOctal(numConversao, type) << endl;
                 }
             }
             else
@@ -140,21 +141,21 @@ void conversorDeNumerosCSV()
                 if (teste_entrada(numConversao, baseOrigem))
                 {
                     numConversaoTestado = stod(numConversao);
-                    arquivoSaida << numConversao << "," << baseOrigem << "," << baseDestino << "," << conversaoDecimalHexadecimal(numConversaoTestado) << endl;
+                    arquivoSaida << numConversao << "," << baseOrigem << "," << baseDestino << "," << conversaoDecimalHexadecimal(numConversaoTestado, type) << endl;
                 }
             }
             else if (baseOrigem == 2)
             {
                 if (teste_entrada(numConversao, baseOrigem))
                 {
-                    arquivoSaida << numConversao << "," << baseOrigem << "," << baseDestino << "," << conversaoBinarioHexadecimal(numConversao) << endl;
+                    arquivoSaida << numConversao << "," << baseOrigem << "," << baseDestino << "," << conversaoBinarioHexadecimal(numConversao, type) << endl;
                 }
             }
             else if (baseOrigem == 8)
             {
                 if (teste_entrada(numConversao, baseOrigem))
                 {
-                    arquivoSaida << numConversao << "," << baseOrigem << "," << baseDestino << "," << conversaoOctalHexadecimal(numConversao) << endl;
+                    arquivoSaida << numConversao << "," << baseOrigem << "," << baseDestino << "," << conversaoOctalHexadecimal(numConversao, type) << endl;
                 }
             }
             else
@@ -172,7 +173,7 @@ void conversorDeNumerosCSV()
             {
                 if (teste_entrada(numConversao, baseOrigem))
                 {
-                    arquivoSaida << numConversao << "," << baseOrigem << "," << baseDestino << "," << conversaoparaDecimal(numConversao, baseOrigem) << endl;
+                    arquivoSaida << numConversao << "," << baseOrigem << "," << baseDestino << "," << conversaoparaDecimal(numConversao, baseOrigem, type) << endl;
                 }
             }
             else
